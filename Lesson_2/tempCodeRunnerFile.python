@@ -1,0 +1,12 @@
+has_degree = True
+speaks_english = True
+has_driver_license = False
+is_certified = False
+years_of_experience = 10
+
+
+
+if has_degree and years_of_experience > 6:
+    print("Qualified for a senior role")
+elif has_degree and years_of_experience > 1 and years_of_experience <5:
+    print("Qualified for a junior role")
