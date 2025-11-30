@@ -1,18 +1,21 @@
 Project name: E-commerce Analytics Simulator
 
-Features:
-- Load analytics data from CSV or via HTTP (API).
-- Filter by date or date range: --start 2025-01-01 --end 2025-01-31. (input from Terminal) 
-# think what else can be provided by user, is it enough?  user will also choose metics for analytics
-- Compute key KPIs:
-   - Sessions / Users
-   - Orders / Revenue
-   - Conversion Rate ( needed: orders, sessions)
-   - Average Order Value (AOV) (revenue, orders)
-   - Repeat Customer Rate ( users with ≥2 distinct order_days ÷ ordering users)
-   - Returning Customer Share ( orders by returning customers ÷ total orders)
-   - Customer Lifetime Value = mean(order_value per user)
-   - Breakdowns: group by day/week/month, device, traffic_source.
-   - Export results to reports/ as JSON or CSV.
+The E-commerce Analytics Simulator is a command-line tool
+that helps analyze website activity and customer behavior using event data stored in a CSV file. 
+The goal of this project is to demonstrate 
+practical data processing, filtering, and KPI calculation using Python.
+Loads analytics data from a CSV file
 
-Using Pandas, external librarties, OOP, creation of classes, debugging featuers(errors)
+Features: 
+- Lets the user filter the data directly in the terminal:
+   - by date or date range
+   - by user_id
+   - by order_id
+- Shows a preview of the filtered dataset
+- Calculates key performance metrics such as:
+   - Total sessions & users
+   - Total orders & revenue
+   - Conversion rate
+   - Average Order Value (AOV)
+   - Average number of pages per session
+   - Average number of sessions per user
