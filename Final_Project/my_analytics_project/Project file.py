@@ -17,7 +17,7 @@ def main(): # function to read csv file (raw data), calculate basic totals and p
         print("Error details:", error)
         return
 
-#STEP 2: Input from the terminal what data do we need: filetr by time, user_id, order_id, user_city
+#STEP 2: Input from the terminal what data do we need: filter by time, user_id, order_id
     print("\nChoose the filter you want to apply (or press Enter to skip):")
     print("1. date")
     print("2. user_id")
