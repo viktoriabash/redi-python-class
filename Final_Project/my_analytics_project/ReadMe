@@ -4,9 +4,10 @@ The E-commerce Analytics Simulator is a command-line tool
 that helps analyze website activity and customer behavior using event data stored in a CSV file. 
 The goal of this project is to demonstrate 
 practical data processing, filtering, and KPI calculation using Python.
-Loads analytics data from a CSV file
+
 
 Features: 
+- Loads analytics data from a CSV file
 - Lets the user filter the data directly in the terminal:
    - by date or date range
    - by user_id
