@@ -75,25 +75,31 @@ def main(): # function to read csv file (raw data), calculate basic totals and p
                 
 # 2.3 Input filter 3: ORDER_ID                     
     elif input_filter == "3":
-        print("Applying order_id filter..")
         filter_order_id = input("\nType here a specific order_id: ").strip()
-        if filter_order_id
-        
-        
+        print("Applying order_id filter..")
+        if filter_order_id != "":
+            filtered_order_id = data[data["order_id"] == filter_order_id]
+            
+            if filtered_order_id.empty: #no rows in the filtered new table
+                print(f"\n No rows found for order_id = {filter_order_id}. Run the program again.")
+                return
+            else:
+                print(f"Filtering data for order_id = {filter_order_id}")
+                data = filtered_order_id
+                       
     else:
         print("Invalid input, no filter applied.")
         return
         
-
-    
-    print("Data preview: ")
-    print(data.head()) # to show first 5 rows
-    print()
-    
+    print("\nData preview: ")
+    print(data.head()) # to show first 5 rows    
     
 #Step 3: Calculating totals for KPIs
+    # 3.1 Basic totals
+
     total_sessions = data["session_id"].nunique() #to calc. number of total unique sessions
     total_users = data["user_id"].nunique()
+    
     orders_only = data[data["order_id"].notna()] # create a table with lines incl.only orders
     total_orders = orders_only["order_id"].nunique()
 
@@ -106,19 +112,36 @@ def main(): # function to read csv file (raw data), calculate basic totals and p
     print("Total revenue: ", round(total_revenue, 2))
     
     print("\n=== Basic KPIs ===")
+    # 3.2. KPIs
+    # 3.2.1 Conversion rate
     if total_sessions > 0:
         conversion_rate = total_orders/total_sessions
     else:
         conversion_rate = 0
-    print("Conversion rate: ",round(conversion_rate,2)*100,"%")
+    print("Conversion rate: ",round(conversion_rate*100, 2)," %")
+    
+    # 3.2.2 AOV
+    if total_revenue > 0:
+        average_order_value = total_revenue/total_orders
+    else:
+        average_order_value = 0
+    print("Average Order Value (AOV): ", round(average_order_value, 2), " EUR")
+    
+    #3.2.3 Average pages per session
+    total_pages_viewed = data["pages_viewed"].sum()
+    if total_sessions > 0:
+        avg_pages_per_session = total_pages_viewed / total_sessions
+    else:
+        avg_pages_per_session = 0
+    print("Average pages per session:", round(avg_pages_per_session, 2))
+    
+    # 3.2.4 Average sessions per user
+    if total_users > 0:
+        avg_sessions_per_user = total_sessions / total_users
+    else:
+        avg_sessions_per_user = 0
+    print("Average sessions per user:", round(avg_sessions_per_user, 2))
+        
     
 
 main()
-            
-            
-# NEXT: 
-# TO ADD multiple choices, e.g. 1+2??????   
-# to add number of views to the file and KPIS   
-# to uses classes
-# errors checks
-# __x__ privacy for some info about users (to add a column with bank card number)      
