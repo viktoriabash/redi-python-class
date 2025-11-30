@@ -1,2 +1,1 @@
-privacy for some info about users (to add a column with bank card number)  , hash function    
-#oop
+https://docs.vultr.com/python/third-party/pandas/to_datetime
